@@ -1,13 +1,22 @@
 import React from "react";
 
 const Footer = () => {
+  const [footer, setFooter] = useState({});
+  useEffect(() => {
+    const db = getDatabase();
+    const footerRef = ref(db, "footer");
+    onValue(footerRef, (snapshot) => {
+      const data = snapshot.val();
+      setFooter(data);
+    });
+  }, []);
   return (
 <footer>
   <div className="container">
     <div className="row">
       <div className="col-md-12 col-sm-12">
         <div className="wow fadeInUp footer-copyright" data-wow-delay="1.8s">
-          <p>Copyright © 2016 Your Company | Design: TemplateMo</p>
+          <p>{footer.footer1}</p>
         </div>
         <ul className="wow fadeInUp social-icon" data-wow-delay="2s">
           <li>
