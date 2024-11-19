@@ -1,6 +1,16 @@
 import React from "react";
 
 const Education = () => {
+  const [education, setEducation] = useState({});
+  useEffect(() => {
+    const db = getDatabase();
+    const educationRef = ref(db, "education");
+    onValue(educationRef, (snapshot) => {
+      const data = snapshot.val();
+      setEducation(data);
+    });
+  }, []);
+
   return (
 <section id="education" className="parallax-section">
   <div className="container">
@@ -8,7 +18,7 @@ const Education = () => {
       <div className="col-md-6 col-sm-6">
         <div className="color-white education-thumb">
           <div className="wow fadeInUp section-title" data-wow-delay="0.8s">
-            <h1>My Education</h1>
+            <h1>{education.education1}</h1>
             <p className="color-white">
               
             </p>
@@ -19,12 +29,10 @@ const Education = () => {
             </div>
             <div className="media-body">
               <h3 className="media-heading">
-                SD - SMA Airmadidi <small>2010 - 2022</small>
+                {education.education2} <small>{education.education3}</small>
               </h3>
               <p className="color-white">
-              I was always an active student in school, participating in various class activities 
-              and extracurriculars. This involvement not only helped me develop social and leadership 
-              skills but also positively impacted my academic achievements.  
+              {education.education4} 
               </p>
             </div>
           </div>
@@ -34,12 +42,10 @@ const Education = () => {
             </div>
             <div className="media-body">
               <h3 className="media-heading">
-                Universitas Klabat <small>2022</small>
+                {education.education5} <small>{education.education6}</small>
               </h3>
               <p className="color-white">
-              I attended Universitas Klabat and was an active student involved in various 
-              organizations and committees. This experience helped me develop teamwork, leadership, 
-              and event management skills while contributing to initiatives that supported the university community.
+              {education.education7}
               </p>
             </div>
           </div>
