@@ -18,10 +18,10 @@ const Home = () => {
                   Hello, I am <strong>Fahrunnisa</strong> 
                 </h1>
                 <p className="wow fadeInUp" data-wow-delay="0.9s">
-                A passionate Digital Marketer and UI/UX Designer who loves creating meaningful experiences 
-                that connect brands with their audiences. With expertise in crafting user-centered designs and 
-                developing data-driven marketing strategies, I focus on delivering solutions that are both visually 
-                compelling and impactful.
+                A highly motivated Digital Marketer and UI/UX Designer committed to crafting engaging experiences 
+                that resonate with audiences and strengthen brand connections. Skilled in developing user-centric 
+                designs and leveraging data-driven marketing strategies, I strive to create solutions that are both 
+                innovative and result-oriented.
                 </p>
                 <a
                   href="#about"
