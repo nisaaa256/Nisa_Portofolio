@@ -1,6 +1,17 @@
 import React from "react";
+import React, { useState, useEffect } from "react";
+import { getDatabase, ref, onValue } from "firebase/database";
 
 const About = () => {
+  const [about, setAbout] = useState({});
+  useEffect(() => {
+    const db = getDatabase();
+    const aboutRef = ref(db, "about");
+    onValue(aboutRef, (snapshot) => {
+      const data = snapshot.val();
+      setAbout(data);
+    });
+  }, []);
   return (
     <section id="about" className="parallax-section">
       <div className="container">
@@ -8,22 +19,12 @@ const About = () => {
           <div className="col-md-6 col-sm-12">
             <div className="about-thumb">
               <div className="wow fadeInUp section-title" data-wow-delay="0.4s">
-                <h1>Know About Me</h1>
-                <p className="color-yellow">
-                  
-                </p>
+                <h1>{about.about1}</h1>
+                <p className="color-yellow"></p>
               </div>
               <div className="wow fadeInUp" data-wow-delay="0.8s">
-                <p>
-                  Hello, I'm Fahrunnisa Indah Cahyani, 20-year-old Digital Marketing enthusiast and 
-                  UI/UX Design student currently pursuing my degree at Universitas Klabat. As a dedicated 
-                  learner, I’m passionate about exploring the intersection of creativity and strategy, 
-                  focusing on delivering user-friendly designs and impactful marketing solutions. 
-                </p>
-                <p>
-                Outside of academics, i enjoy
-                exploring the latest trends in design and technology.
-                </p>
+                <p>{about.about2}</p>
+                <p>{about.about3}</p>
               </div>
             </div>
           </div>
@@ -36,14 +37,12 @@ const About = () => {
                 className="wow fadeInUp section-title color-white"
                 data-wow-delay="1.2s"
               >
-                <h1>My Skills</h1>
-                <p className="color-white">
-                  HTML CSS JS . Web Design
-                </p>
+                <h1>{about.about4}</h1>
+                <p className="color-white">{about.about5}</p>
               </div>
               <div className=" wow fadeInUp skills-thumb" data-wow-delay="1.6s">
-                <strong>Digital Marketing</strong>
-                <span className="color-white pull-right">90%</span>
+                <strong>{about.about6}</strong>
+                <span className="color-white pull-right">{about.about7}</span>
                 <div className="progress">
                   <div
                     className="progress-bar progress-bar-primary"
@@ -54,8 +53,8 @@ const About = () => {
                     style={{ width: "90%" }}
                   />
                 </div>
-                <strong>Web Design</strong>
-                <span className="color-white pull-right">70%</span>
+                <strong>{about.about8}</strong>
+                <span className="color-white pull-right">{about.about9}</span>
                 <div className="progress">
                   <div
                     className="progress-bar progress-bar-primary"
@@ -66,8 +65,8 @@ const About = () => {
                     style={{ width: "70%" }}
                   />
                 </div>
-                <strong>UI & UX Design</strong>
-                <span className="color-white pull-right">80%</span>
+                <strong>{about.about10}</strong>
+                <span className="color-white pull-right">{about.about11}</span>
                 <div className="progress">
                   <div
                     className="progress-bar progress-bar-primary"
