@@ -1,6 +1,16 @@
 import React from "react";
 
 const Home = () => {
+  const [home, setHome] = useState({});
+  useEffect(() => {
+    const db = getDatabase();
+    const homeRef = ref(db, "home");
+    onValue(homeRef, (snapshot) => {
+      const data = snapshot.val();
+      setHome(data);
+    });
+  }, []);
+
   return (
     <section id="home" className="parallax-section">
       <div className="container">
@@ -12,23 +22,20 @@ const Home = () => {
             <div className="home-thumb">
               <div className="section-title">
                 <h4 className="wow fadeInUp" data-wow-delay="0.3s">
-                  welcome to my website
+                  {home.home1}
                 </h4>
                 <h1 className="wow fadeInUp" data-wow-delay="0.6s">
-                  Hello, I am <strong>Fahrunnisa</strong> 
+                  {home.home2} <strong>{home.home3}</strong> 
                 </h1>
                 <p className="wow fadeInUp" data-wow-delay="0.9s">
-                A highly motivated Digital Marketer and UI/UX Designer committed to crafting engaging experiences 
-                that resonate with audiences and strengthen brand connections. Skilled in developing user-centric 
-                designs and leveraging data-driven marketing strategies, I strive to create solutions that are both 
-                innovative and result-oriented.
+                {home.home4}
                 </p>
                 <a
                   href="#about"
                   className="wow fadeInUp smoothScroll section-btn btn btn-success"
                   data-wow-delay="1.4s"
                 >
-                  Get Started
+                  {home.home5}
                 </a>
               </div>
             </div>
