@@ -1,6 +1,15 @@
 import React from "react";
 
 const Contact = () => {
+  const [contact, setContact] = useState({});
+  useEffect(() => {
+    const db = getDatabase();
+    const contactRef = ref(db, "contact");
+    onValue(contactRef, (snapshot) => {
+      const data = snapshot.val();
+      setContact(data);
+    });
+  }, []);
   return (
     <section id="contact" className="parallax-section">
       <div className="container">
@@ -8,10 +17,9 @@ const Contact = () => {
           <div className="col-md-6 col-sm-12">
             <div className="contact-form">
               <div className="wow fadeInUp section-title" data-wow-delay="0.2s">
-                <h1 className="color-white">Say hello..</h1>
+                <h1 className="color-white">{contact.contact1}</h1>
                 <p className="color-white">
-                  Integer ut consectetur est. In cursus orci non ipsum gravida
-                  dignissim.
+                  {contact.contact2}
                 </p>
               </div>
               <div id="contact-form">
@@ -66,20 +74,20 @@ const Contact = () => {
           <div className="bg-dark col-md-3 col-sm-6">
             <div className="contact-thumb">
               <div className="wow fadeInUp contact-info" data-wow-delay="0.6s">
-                <h3 className="color-white">Visit my LinkedIn</h3>
-                <p>https://www.linkedin.com/in/fahrunnisa-indah-cahyani-b54252271/</p>
+                <h3 className="color-white">{contact.contact3}</h3>
+                <p>{contact.contact4}</p>
               </div>
               <div className="wow fadeInUp contact-info" data-wow-delay="0.8s">
-                <h3 className="color-white">Contact.</h3>
+                <h3 className="color-white">{contact.contact5}</h3>
                 <p>
-                  <i className="fa fa-phone" /> 08980835200
+                  <i className="fa fa-phone" /> {contact.contact6}
                 </p>
                 <p>
                   <i className="fa fa-envelope-o" />{" "}
-                  <a href="mailto:hello@company.co">fahrunisacahyani24@gmail.com</a>
+                  <a href="mailto:hello@company.co">{contact.contact7}</a>
                 </p>
                 <p>
-                  <i className="fa fa-globe" /> <a href="#">company.co</a>
+                  <i className="fa fa-globe" /> <a href="#">{contact.contact8}</a>
                 </p>
               </div>
             </div>
