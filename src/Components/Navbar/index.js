@@ -1,4 +1,13 @@
 const Navbar = () => {
+  const [navbar, setNavbar] = useState({});
+  useEffect(() => {
+    const db = getDatabase();
+    const navbarRef = ref(db, "navbar");
+    onValue(navbarRef, (snapshot) => {
+      const data = snapshot.val();
+      setNavbar(data);
+    });
+  }, []);
   return (
 <div className="navbar navbar-fixed-top custom-navbar" role="navigation">
   <div className="container">
@@ -9,34 +18,34 @@ const Navbar = () => {
         <span className="icon icon-bar" />
       </button>
       <a href="#" className="navbar-brand">
-        My Portofolio
+        {navbar.navbar1}
       </a>
     </div>
     <div className="collapse navbar-collapse">
       <ul className="nav navbar-nav navbar-right">
         <li>
           <a href="#home" className="smoothScroll">
-            Home
+            {navbar.navbar2}
           </a>
         </li>
         <li>
           <a href="#about" className="smoothScroll">
-            About Me
+            {navbar.navbar3}
           </a>
         </li>
         <li>
           <a href="#experience" className="smoothScroll">
-            Awards
+            {navbar.navbar4}
           </a>
         </li>
         <li>
           <a href="#quotes" className="smoothScroll">
-            Testimonial
+            {navbar.navbar5}
           </a>
         </li>
         <li>
           <a href="#contact" className="smoothScroll">
-            Contact
+            {navbar.navbar6}
           </a>
         </li>
       </ul>
